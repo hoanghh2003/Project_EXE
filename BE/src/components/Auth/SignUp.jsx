@@ -1,6 +1,6 @@
 import facebook from "../../assets/img/fb.png";
 import instagram from "../../assets/img/ins.png";
-const Services = () => {
+const SignUp = () => {
   return (
     <footer className="bg-gray-800 text-white text-center py-4">
       <p>&copy; 2024 Your Bakery. All rights reserved.</p>
@@ -32,4 +32,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default SignUp;

@@ -6,10 +6,12 @@ import SlideShow from "../SlideShow/SlideShow";
 const Home = () => {
   return (
     <div>
-      <Header></Header>
-      <SlideShow></SlideShow>
-      <Section></Section>
-      <Footer></Footer>
+      <Header />
+      <main>
+        <SlideShow />
+        <Section />
+      </main>
+      <Footer />
     </div>
   );
 };

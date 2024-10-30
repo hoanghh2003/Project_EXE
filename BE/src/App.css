@@ -1,3 +1,17 @@
+/* Global Styles */
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,38 +19,225 @@
   text-align: center;
 }
 
+/* Logo - rotation and drop-shadow effect on hover */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  height: 4rem;
+  width: 5rem;
+  transition: filter 300ms, transform 300ms;
+  cursor: pointer;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  transform: rotate(360deg);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body.dark-mode .logo {
+  filter: drop-shadow(0 0 2em #ffffffaa);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+body.dark-mode .logo:hover {
+  filter: drop-shadow(0 0 2em #61dafb);
 }
 
+/* Card layout */
 .card {
-  padding: 2em;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.read-the-docs {
-  color: #888;
+/* Dark Mode */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
+
+body.dark-mode .card {
+  background-color: #333333;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Header with Dark Mode Effects */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0.75rem 0;
+  z-index: 50;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header.dark-mode {
+  background: linear-gradient(135deg, #333333, #444444);
+  color: #ffffff;
+}
+
+header a {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s;
+}
+
+header a:hover {
+  color: #61dafb;
+}
+
+body.dark-mode header a {
+  color: #ffffff;
+}
+
+body.dark-mode header a:hover {
+  color: #61dafb;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  position: relative;
+  display: inline-block;
+  width: 49px;
+  height: 24px;
+  margin-right: 2rem;
+}
+
+/* Hide the checkbox */
+.dark-mode-toggle input[type="checkbox"] {
+  display: none;
+}
+
+/* Toggle Label - Background */
+.dark-mode-toggle label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border-radius: 24px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Dark Mode Icon Styles */
+.dark-mode-toggle label .sun-icon,
+.dark-mode-toggle label .moon-icon {
+  position: absolute;
+  font-size: 0.9rem;
+  color: #ffffff;
+  transition: opacity 0.3s ease, left 0.3s ease, right 0.3s ease;
+  z-index: 1;
+}
+
+/* Sun icon for light mode */
+.dark-mode-toggle label .sun-icon {
+  left: 0px; /* Align sun icon to the left within the toggle */
+  opacity: 1;
+}
+
+/* Moon icon for dark mode */
+.dark-mode-toggle label .moon-icon {
+  right: 0px; /* Align moon icon to the right within the toggle */
+  opacity: 0;
+}
+
+/* Toggle Dark Mode */
+.dark-mode-toggle input:checked + label {
+  background-color: #444;
+}
+
+.dark-mode-toggle input:checked + label .sun-icon {
+  opacity: 0;
+}
+
+.dark-mode-toggle input:checked + label .moon-icon {
+  opacity: 1;
+}
+
+/* Toggle Switch - Slider */
+.dark-mode-toggle label span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.dark-mode-toggle input:checked + label span {
+  transform: translateX(26px);
+  background-color: hsl(0, 0%, 0%);
+}
+
+/* Centering nav items */
+.centercontent {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.centercontent ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 2rem;
+}
+
+.centercontent li a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.centercontent li a:hover {
+  color: #61dafb;
+}
+
+/* Container for Sign Up and Sign In buttons */
+.rightcontent {
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Center vertically */
+  gap: 0.5rem; /* Space between Sign Up and Sign In buttons */
+  white-space: nowrap;
+}
+
+/* Sign Up and Sign In buttons */
+.rightcontent a.btn1 {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: #ffffff;
+  border: 1px solid #61dafb;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.rightcontent a.btn1:hover {
+  background-color: #61dafb;
+  color: #ffffff;
+}
+
+.rightcontent a {
+  font-size: 0.8rem;
+  color: #61dafb;
+  transition: color 0.3s;
+}
+
+.rightcontent a:hover {
+  color: #ffffff;
+}
+

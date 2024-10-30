@@ -1,0 +1,155 @@
+/* Section Container with animated gradient background */
+.sectionContainer {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0, #f8fafc);
+  background-size: 200% 200%;
+  animation: gradientAnimation 8s ease infinite;
+  padding: 4rem 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 300px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Animation for Logo */
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.logoContainer {
+  margin-bottom: 1.5rem;
+  perspective: 1000px;
+}
+
+.logo {
+  height: 8rem;
+  max-width: 100%;
+  animation: floatAnimation 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Title with animated underline */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background-color: #3b82f6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.visible .title::after {
+  transform: scaleX(1);
+}
+
+/* Typing Animation for Description */
+.description {
+  color: #4b5563;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #3b82f6;
+  animation: typing 3s steps(40, end), blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+  from { border-color: #3b82f6; }
+  to { border-color: transparent; }
+}
+
+/* Button Glow Effect */
+.buttonContainer {
+  margin-top: 2rem;
+}
+
+.learnMoreBtn {
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 8px rgba(59, 130, 246, 0.6);
+  cursor: pointer;
+  border: none;
+}
+
+.learnMoreBtn:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0px 0px 12px rgba(59, 130, 246, 0.8);
+}
+
+.learnMoreBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: border-color 0.4s ease;
+}
+
+.learnMoreBtn:hover::before {
+  border-color: #61dafb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .logo {
+    height: 6rem;
+  }
+
+  .learnMoreBtn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

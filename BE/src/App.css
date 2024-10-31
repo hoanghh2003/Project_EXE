@@ -9,20 +9,18 @@ body {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
-#root {
+.root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
 /* Logo - rotation and drop-shadow effect on hover */
 .logo {
   height: 4rem;
-  width: 5rem;
+  width: 4rem;
   transition: filter 300ms, transform 300ms;
   cursor: pointer;
 }
@@ -101,85 +99,6 @@ body.dark-mode header a:hover {
   color: #61dafb;
 }
 
-/* Dark Mode Toggle */
-.dark-mode-toggle {
-  position: relative;
-  display: inline-block;
-  width: 49px;
-  height: 24px;
-  margin-right: 2rem;
-}
-
-/* Hide the checkbox */
-.dark-mode-toggle input[type="checkbox"] {
-  display: none;
-}
-
-/* Toggle Label - Background */
-.dark-mode-toggle label {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #333;
-  border-radius: 24px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-/* Dark Mode Icon Styles */
-.dark-mode-toggle label .sun-icon,
-.dark-mode-toggle label .moon-icon {
-  position: absolute;
-  font-size: 0.9rem;
-  color: #ffffff;
-  transition: opacity 0.3s ease, left 0.3s ease, right 0.3s ease;
-  z-index: 1;
-}
-
-/* Sun icon for light mode */
-.dark-mode-toggle label .sun-icon {
-  left: 0px; /* Align sun icon to the left within the toggle */
-  opacity: 1;
-}
-
-/* Moon icon for dark mode */
-.dark-mode-toggle label .moon-icon {
-  right: 0px; /* Align moon icon to the right within the toggle */
-  opacity: 0;
-}
-
-/* Toggle Dark Mode */
-.dark-mode-toggle input:checked + label {
-  background-color: #444;
-}
-
-.dark-mode-toggle input:checked + label .sun-icon {
-  opacity: 0;
-}
-
-.dark-mode-toggle input:checked + label .moon-icon {
-  opacity: 1;
-}
-
-/* Toggle Switch - Slider */
-.dark-mode-toggle label span {
-  display: block;
-  width: 20px;
-  height: 20px;
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.dark-mode-toggle input:checked + label span {
-  transform: translateX(26px);
-  background-color: hsl(0, 0%, 0%);
-}
-
 /* Centering nav items */
 .centercontent {
   display: flex;
@@ -207,37 +126,3 @@ body.dark-mode header a:hover {
 .centercontent li a:hover {
   color: #61dafb;
 }
-
-/* Container for Sign Up and Sign In buttons */
-.rightcontent {
-  display: flex; /* Align items horizontally */
-  align-items: center; /* Center vertically */
-  gap: 0.5rem; /* Space between Sign Up and Sign In buttons */
-  white-space: nowrap;
-}
-
-/* Sign Up and Sign In buttons */
-.rightcontent a.btn1 {
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-  color: #ffffff;
-  border: 1px solid #61dafb;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.rightcontent a.btn1:hover {
-  background-color: #61dafb;
-  color: #ffffff;
-}
-
-.rightcontent a {
-  font-size: 0.8rem;
-  color: #61dafb;
-  transition: color 0.3s;
-}
-
-.rightcontent a:hover {
-  color: #ffffff;
-}
-

@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
         <div>
           <a
-            className="text-blue-500 underline underline-offset-1 mx-2.5 border-r border-white pr-2"
+            className="text-blue-500 underline underline-offset-1 mx-2.5 border-r border-white pr-3"
             href="#terms"
           >
             Terms of Service

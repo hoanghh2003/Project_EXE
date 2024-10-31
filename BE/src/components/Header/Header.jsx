@@ -1,70 +1,57 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import logo from "../../assets/img/logo.png";
-
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const body = document.body;
-    if (darkMode) {
-      body.classList.add("dark-mode");
-    } else {
-      body.classList.remove("dark-mode");
-    }
-  }, [darkMode]);
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
+  useEffect(() => {
+    document.body.classList.toggle("bg-gray-900", darkMode);
+    document.body.classList.toggle("text-white", darkMode);
+    document.body.classList.toggle("bg-white", !darkMode);
+    document.body.classList.toggle("text-black", !darkMode);
+  }, [darkMode]);
+
   return (
     <header
-      className={`py-4 fixed top-0 w-full z-50 shadow-lg flex items-center transition duration-300 ${
-        darkMode ? "bg-gray-900 text-white" : "bg-gradient-to-br from-gray-800 to-gray-700 text-black"
+      className={`fixed top-0 w-full z-50 shadow-lg flex items-center transition duration-300 ${
+        darkMode
+          ? "bg-gray-900 text-white"
+          : "bg-gradient-to-br from-gray-800 to-gray-700 text-black"
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center px-4">
-        <div className="leftcontent">
-          <Link to="/">
-            <img
-              src={logo}
-              alt="Logo"
-              className="logo w-16 h-16 rounded-full"
-            />
+      <div className="container mx-auto flex justify-between items-center px-0 py-2.5">
+        <Link to="/">
+          <img src={logo} alt="Logo" className="logo w-16 h-16 rounded-full" />
+        </Link>
+
+        <nav className="flex-grow flex justify-center gap-8">
+          <Link
+            to="/about"
+            className="text-lg font-medium transition hover:underline hover:text-blue-400"
+          >
+            About Us
           </Link>
-        </div>
-        <nav className="centercontent flex-grow">
-          <ul className="flex justify-center gap-8 list-none p-0 m-0">
-            <li>
-              <Link
-                to="/about"
-                className="text-white font-medium text-lg transition hover:underline hover:text-blue-500"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/services"
-                className="text-white font-medium text-lg transition hover:underline hover:text-blue-500"
-              >
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className="text-white font-medium text-lg transition hover:underline hover:text-blue-500"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
+          <Link
+            to="/services"
+            className="text-lg font-medium transition hover:underline hover:text-blue-400"
+          >
+            Services
+          </Link>
+          <Link
+            to="/contact"
+            className="text-lg font-medium transition hover:underline hover:text-blue-400"
+          >
+            Contact
+          </Link>
         </nav>
+
         <div className="flex items-center space-x-4">
-          <div className="dark-mode-toggle">
+          <div className="relative inline-flex items-center">
             <input
               type="checkbox"
               id="darkModeSwitch"
@@ -72,22 +59,45 @@ const Header = () => {
               checked={darkMode}
               onChange={toggleDarkMode}
             />
-            <label htmlFor="darkModeSwitch" className="cursor-pointer">
-              <span className="sun-icon">☀️</span>
-              <span className="moon-icon">🌙</span>
-              <span></span>
+            <label
+              htmlFor="darkModeSwitch"
+              className="flex items-center bg-gray-800 rounded-full w-14 h-7 p-0 cursor-pointer transition"
+            >
+              <span
+                className={`pl-2 text-xs ${
+                  darkMode ? "opacity-100" : "opacity-0"
+                }`}
+                role="img"
+                aria-label="Sun"
+              >
+                ☀️
+              </span>
+              <span
+                className={`pl-2 text-xs ${
+                  darkMode ? "opacity-0" : "opacity-100"
+                }`}
+                role="img"
+                aria-label="Moon"
+              >
+                🌙
+              </span>
+              <span
+                className={`absolute left-1 top-1 w-5 h-5 rounded-full bg-white transform transition ${
+                  darkMode ? "translate-x-7" : "translate-x-0"
+                }`}
+              ></span>
             </label>
           </div>
-          <div className="rightcontent flex items-center space-x-2">
+          <div className="absolute top-0 right-11">
             <Link
-              className="btn1 text-white text-sm px-3 py-1 border border-gray-500 rounded transition hover:bg-blue-500 hover:text-white"
               to="/signup"
+              className="px-8 py-0 border-r border-black text-sm transition text-blue-600"
             >
               Sign Up
             </Link>
             <Link
-              className="text-blue-300 text-sm transition hover:text-blue-600"
               to="/signin"
+              className="text-sm transition hover:text-blue-600"
             >
               Sign In
             </Link>
@@ -99,4 +109,3 @@ const Header = () => {
 };
 
 export default Header;
-
